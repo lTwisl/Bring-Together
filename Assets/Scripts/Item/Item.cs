@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    //public static Action Merge;
-    //[HideInInspector] public ItemsManager ItemsManager;
-
-    //[Header("- - - Индивидуальные параметры обьекта - - -")]
-    //public int itemIndexInClass;
-    //public bool main = false;
-    //public bool contact = false;
-
     public static event Action<Item> Merged;
 
     [field: SerializeField] public int Index { get; /*private*/ set; }
@@ -23,7 +15,7 @@ public class Item : MonoBehaviour
         StartCoroutine(ObjectScaling());
     }
 
-    IEnumerator ObjectScaling()
+    private IEnumerator ObjectScaling()
     {
         float counter = 0;
         float duration = 0.5f;
@@ -46,9 +38,11 @@ public class Item : MonoBehaviour
         if (other.Index != Index)
             return;
 
-        // Определяем кто инициировал слияние
-        if (_isInitiatorContact == false)
+        // Проверяем чтобы оба объекта не находились в контакте
+        if (_isInitiatorContact == false || other._isInitiatorContact == false)
             return;
+
+        _isInitiatorContact = false;
         other._isInitiatorContact = false;
 
         Vector3 contactPoint = collision.GetContact(0).point;
@@ -67,51 +61,4 @@ public class Item : MonoBehaviour
         Destroy(other.gameObject);
         Destroy(gameObject);
     }
-
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    return;
-
-    //    // Столкновение с обьектами игнора
-    //    if (collision.gameObject.layer == 3)
-    //    {
-    //        //Debug.Log("Обьект просчитал столкновение с обьектом - <color=blue>" + collision.gameObject.name + "</color>, класса Borders");
-    //        return;
-    //    }
-
-    //    // Столкновение с другим предметом
-    //    try
-    //    {
-    //        Item ItemCollision = collision.gameObject.GetComponent<Item>();
-    //        if (ItemCollision.itemIndexInClass == itemIndexInClass)
-    //        {
-    //            // Проверка, кто иниицировал контакт
-    //            Vector2 selfVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
-    //            Vector2 otherVelocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-    //            float velocityValueSelf = Mathf.Sqrt(Mathf.Pow(selfVelocity.x, 2) + Mathf.Pow(selfVelocity.y, 2));
-    //            float velocityValueOther = Mathf.Sqrt(Mathf.Pow(otherVelocity.x, 2) + Mathf.Pow(otherVelocity.y, 2));
-
-    //            if (velocityValueSelf > velocityValueOther)
-    //                main = true;
-    //            else
-    //                main = false;
-
-    //            // Отправляем данные об контакте менеджеру
-    //            if (main && !contact)
-    //            {
-    //                Debug.Log("Слияние обьекта: <color=teal>" + gameObject.name + "</color> c обьектом <color=teal>" + collision.gameObject.name + "</color>");
-    //                ItemsManager.contactsPoints.Add(collision.GetContact(0).point);
-    //                ItemsManager.mergedIndexes.Add(itemIndexInClass + 1);
-    //                ItemsManager.destroyObjects.Add(gameObject);
-    //                ItemsManager.destroyObjects.Add(collision.gameObject);
-    //                Merge?.Invoke();
-    //            }
-    //            contact = true;
-    //        }
-    //    }
-    //    catch
-    //    {
-    //        Debug.LogWarning("Обьект просчитал столкновение с обьектом - <color=orange>" + collision.gameObject.name + "</color>, с которомы не должен был");
-    //    }
-    //}
 }
