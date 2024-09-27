@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
@@ -24,7 +22,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Run()
     {
-        
+
     }
 
     public void LoadSceneGame(string scene)

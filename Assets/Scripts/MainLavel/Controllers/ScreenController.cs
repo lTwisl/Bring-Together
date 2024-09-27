@@ -1,6 +1,4 @@
-using System;
-
-public class ScreenController : IDisposable
+public class ScreenController
 {
     private ScreenView _view;
 
@@ -20,10 +18,5 @@ public class ScreenController : IDisposable
     void OnTotalStarsChanged(int totalStars)
     {
         _view.TotalStars = totalStars;
-    }
-
-    public void Dispose()
-    {
-        _tableLevelsModel.TotalStarsChanged -= OnTotalStarsChanged;
     }
 }

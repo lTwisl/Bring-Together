@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
+
 public class LevelModel
 {
     public event Action<int> StarsChanged;

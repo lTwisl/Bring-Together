@@ -10,8 +10,8 @@
         _levelModel = levelModel;
         _levelView = levelView;
 
-        levelView.BtnOpenLevel.onClick.AddListener(() => levelModel.LoadLevel());
-        levelModel.StarsChanged += (int stars) => levelView.Stars = stars;
+        levelView.BtnOpenLevel.onClick.AddListener(levelModel.LoadLevel);
+        levelModel.StarsChanged += OnStarsChanged;
     }
 
     public void SetStars(int stars)
@@ -22,6 +22,11 @@
     public void UpdateView()
     {
         _levelView.Stars = _levelModel.Stars;
+    }
+
+    private void OnStarsChanged(int stars)
+    {
+        _levelView.Stars = stars;
     }
 }
 

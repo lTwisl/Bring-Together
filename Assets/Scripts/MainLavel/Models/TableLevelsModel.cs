@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[Serializable]
-public class TableLevelsModel : IDisposable
+
+public class TableLevelsModel
 {
     public event Action<int> TotalStarsChanged;
 
@@ -39,14 +38,6 @@ public class TableLevelsModel : IDisposable
     public void CalculateTotalStars()
     {
         TotalStars = Levels.Sum(x => x.Stars);
-    }
-
-    public void Dispose()
-    {
-        for (int i = 0; i < Levels.Length; i++)
-        {
-            Levels[i].StarsChanged -= OnStarsChanged;
-        }
     }
 }
 

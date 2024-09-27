@@ -1,13 +1,16 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TableLevelsView : MonoBehaviour
 {
     [SerializeField] private LevelView _levelViewPrefab;
 
+    private List<LevelView> _levelViews = new();
+
     public LevelView CreateLevelView()
     {
-        return Instantiate(_levelViewPrefab, transform);
+        LevelView levelView = Instantiate(_levelViewPrefab, transform);
+        _levelViews.Add(levelView);
+        return levelView;
     }
 }

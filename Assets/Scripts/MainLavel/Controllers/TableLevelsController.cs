@@ -1,6 +1,4 @@
-﻿
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
 
 public class TableLevelsController
 {
