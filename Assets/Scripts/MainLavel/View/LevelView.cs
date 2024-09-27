@@ -1,17 +1,17 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelView : MonoBehaviour
 {
-    public string LevelName;
+    [SerializeField] private Button _btnOpenLevel;
+    [SerializeField] private TMP_Text _stars;
 
-    [SerializeField] private Button BtnOpenLevel;
+    public Button BtnOpenLevel => _btnOpenLevel;
 
-    public GameObject[] _stars;
-
-    private void Awake()
+    public int Stars
     {
-        BtnOpenLevel.onClick.AddListener(() => GameManager.Instance.LoadScene(LevelName));
+        get => int.Parse(_stars.text);
+        set => _stars.SetText(value.ToString());
     }
 }

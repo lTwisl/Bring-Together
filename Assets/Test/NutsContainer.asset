@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2f1f2906c762642b1c82c66b2dab63, type: 3}
+  m_Name: NutsContainer
+  m_EditorClassIdentifier: 
+  className: 
+  typeSpawnItems: 0
+  indexSmallestSpawnItem: 0
+  indexBiggestSpawnItem: 0
+  _itemParameters:
+  - itemName: Nut M3
+    prefab: {fileID: 1197531479470953734, guid: 01edd77b7e5ba7a4f8cd22b9c3c62b64, type: 3}
+    pointsForMerging: 1
+  - itemName: Nut M4
+    prefab: {fileID: 1197531479470953734, guid: e6c8077e1054c884a98b0dbd2b27b830, type: 3}
+    pointsForMerging: 2
+  - itemName: Nut M5
+    prefab: {fileID: 1197531479470953734, guid: d6c751f723c0f6a4d877deca78e4c99d, type: 3}
+    pointsForMerging: 4
+  - itemName: Nut M6
+    prefab: {fileID: 1197531479470953734, guid: d58022cfe78377043b2c2b1d4543091e, type: 3}
+    pointsForMerging: 8
+  - itemName: Nut M7
+    prefab: {fileID: 1197531479470953734, guid: 27e9dca64faf66a48810f3dfd0b12a3a, type: 3}
+    pointsForMerging: 8
+  - itemName: Nut M8
+    prefab: {fileID: 1197531479470953734, guid: 9c3d3f8eb9d6d214d803d83c36cbbf84, type: 3}
+    pointsForMerging: 8

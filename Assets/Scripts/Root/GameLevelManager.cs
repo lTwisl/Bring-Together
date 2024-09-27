@@ -9,8 +9,8 @@ public class GameLevelManager : MonoBehaviour
     public event Action<int> ChanchedScore;
     public event Action<int> LevelComplited;
 
-    [field: SerializeField] public ItemsContainer ItemsContainer {get; private set;}
-    [SerializeField] private int ScoreForComplited;
+    [field: SerializeField] public ItemsContainer ItemsContainer { get; private set; }
+    [SerializeField] private int _countStars;
 
     private int _score;
     public int Score
@@ -23,45 +23,55 @@ public class GameLevelManager : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
         Instance = this;
     }
 
-    public void LoadSceneGame(string scene)
+    private void Start()
     {
-        GameManager.Instance.LoadScene(scene);
+        DataFinishedLevel.Clear();
+        DataFinishedLevel.SceneName = SceneManager.GetActiveScene().name;
     }
 
-    public void Run(DataFinishedLevel data)
+    private void OnEnable()
     {
-        ChanchedScore += (int score) =>
-        {
-            if (Score >= ScoreForComplited)
-                LevelComplited?.Invoke(Score);
-        };
-
-        LevelComplited += (int score) =>
-        {
-            Debug.Log($"Score = {score}");
-
-            data.Score = score;
-            data.SceneName = SceneManager.GetActiveScene().name;
-            LoadSceneGame(ScenesName.MAIN);
-        };
-
         Item.Merged += OnMerged;
     }
 
-
-    private void OnDestroy()
+    private void OnDisable()
     {
         Item.Merged -= OnMerged;
+    }
+
+    public void Run()
+    {
+        
     }
 
     private void OnMerged(Item newItem)
     {
         Score += ItemsContainer[newItem.Index].pointsForMerging;
-        Debug.Log($"Score = {Score}");
+        DataFinishedLevel.Score = Score;
+
+        int countItems = ItemsContainer.Length;
+        if (newItem.Index >= countItems - _countStars)
+        {
+            _countStars -= 1;
+            DataFinishedLevel.Stars += 1;
+            Debug.Log("Pickup star!!!");
+
+
+            if (_countStars <= 0)
+            {
+                LevelComplited?.Invoke(Score);
+                Debug.Log("Level complited!!!");
+
+                GameManager.Instance.LoadScene(ScenesName.MAIN_MENU);
+            }
+        }
+
+        /*Debug.Log($"Score = {Score}");*/
     }
 }

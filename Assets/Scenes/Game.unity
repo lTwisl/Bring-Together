@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 724459833}
   - component: {fileID: 724459832}
   m_Layer: 0
-  m_Name: GameplaySceneManager
+  m_Name: GameLevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ItemsContainer>k__BackingField: {fileID: 11400000, guid: 0d53d86d1ba4a864396085096216023a, type: 2}
-  ScoreForComplited: 100
+  _countStars: 2
 --- !u!4 &724459833
 Transform:
   m_ObjectHideFlags: 0
@@ -2319,7 +2319,7 @@ Transform:
   m_GameObject: {fileID: 1991395563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 21.04, z: 0}
+  m_LocalPosition: {x: 0, y: 2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

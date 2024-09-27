@@ -1,21 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class ScreenView : MonoBehaviour
 {
-    [SerializeField] private LevelView[] levelViews;
+    [field: SerializeField] public TableLevelsView TableLevelsView { get; private set; }
+    [SerializeField] private TMP_Text _txtTotalStars;
 
-    private string _lastFinishedLevelName;
-
-    private void Start()
+    public int TotalStars
     {
-        _lastFinishedLevelName = DataFinishedLevel.Instance.SceneName;
-        if (_lastFinishedLevelName == null || _lastFinishedLevelName == "")
-            return;
-
-        LevelView l = levelViews.First(x => x.LevelName == _lastFinishedLevelName);
-        l?._stars[0]?.gameObject.SetActive(true);
+        get => int.Parse(_txtTotalStars.text);
+        set => _txtTotalStars.SetText(value.ToString());
     }
 }

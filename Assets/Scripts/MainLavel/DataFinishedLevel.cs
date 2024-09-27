@@ -1,24 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-
-public class DataFinishedLevel : MonoBehaviour
+public static class DataFinishedLevel
 {
-    public static DataFinishedLevel Instance;
+    public static string SceneName { get; set; }
+    public static int Score { get; set; }
+    public static int Stars { get; set; }
 
-
-    public string SceneName { get; set; }
-    public int Score {  get; set; }
-
-    private void Awake()
+    public static void Clear()
     {
-        /*DontDestroyOnLoad(gameObject);*/
-
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(Instance);
+        SceneName = "";
+        Score = 0;
+        Stars = 0;
     }
 }

@@ -1,19 +1,30 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
-    //public static MainMenuManager Instance { get; private set; }
+    public static MainMenuManager Instance { get; private set; }
 
-    public void Run(DataFinishedLevel data)
-    {
-        Debug.Log($"You Win!!! Score = {data.Score}");
-    }
+    [SerializeField] private string[] _levelNames;
+
+    [SerializeField] private ScreenView _screenView;
+    private ScreenController _screenController;
 
     public virtual void Awake()
     {
-        //Instance = this;
+        Instance = this;
+        _screenController = new ScreenController(_screenView, _levelNames);
+    }
+
+    private void Start()
+    {
+        _screenController.TableLevelsController.SetStars("Game", 2);
+    }
+
+    public void Run()
+    {
+        
     }
 
     public void LoadSceneGame(string scene)

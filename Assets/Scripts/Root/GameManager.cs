@@ -1,15 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager
 {
-    public static GameManager Instance { get; private set; } 
+    public static GameManager Instance { get; private set; }
 
     private Coroutines _coroutines;
     private UiLoadingScreenView _uiLoadingScreen;
-    private DataFinishedLevel _dataFinishedLevel;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void AutostartGame()
@@ -28,9 +27,6 @@ public class GameManager
         UiLoadingScreenView prefabUiLoadingScreen = Resources.Load<UiLoadingScreenView>("UiLoadingScreen");
         _uiLoadingScreen = Object.Instantiate(prefabUiLoadingScreen);
         Object.DontDestroyOnLoad(_uiLoadingScreen.gameObject);
-
-        _dataFinishedLevel = new GameObject("DataFinishedLevel").AddComponent<DataFinishedLevel>();
-        Object.DontDestroyOnLoad(_dataFinishedLevel.gameObject);
     }
 
     private void RunGame()
@@ -49,19 +45,19 @@ public class GameManager
     }
 
     private IEnumerator LoadAndStartScene(string sceneName)
-    {   
+    {
         _uiLoadingScreen.Show();
 
         yield return SceneManager.LoadSceneAsync(ScenesName.BOOT);
         yield return SceneManager.LoadSceneAsync(sceneName);
- 
+
         //yield return null/*new WaitForSeconds(2)*/; // Для тестов 2 секуеды, для релиза достаточно null (пропуск одного кадра)
 
-        if (sceneName == ScenesName.MAIN)
+        if (sceneName == ScenesName.MAIN_MENU)
         {
             MainMenuManager manager = Object.FindObjectOfType<MainMenuManager>();
             if (manager != null)
-                manager.Run(_dataFinishedLevel);
+                manager.Run();
             else
                 Debug.LogError("На уровне нет менеджера");
         }
@@ -69,7 +65,7 @@ public class GameManager
         {
             GameLevelManager manager = Object.FindObjectOfType<GameLevelManager>();
             if (manager != null)
-                manager.Run(_dataFinishedLevel);
+                manager.Run();
             else
                 Debug.LogError("На уровне нет менеджера");
         }

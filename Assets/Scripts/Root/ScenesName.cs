@@ -1,6 +1,6 @@
 ﻿public static class ScenesName
 {
-    public static string BOOT = "Boot";
-    public static string MAIN = "Main";
+    public const string BOOT = "Boot";
+    public const string MAIN_MENU = "Main";
 }
 
