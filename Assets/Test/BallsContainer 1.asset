@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2f1f2906c762642b1c82c66b2dab63, type: 3}
+  m_Name: BallsContainer 1
+  m_EditorClassIdentifier: 
+  className: 
+  typeSpawnItems: 0
+  indexSmallestSpawnItem: 0
+  indexBiggestSpawnItem: 0
+  _itemParameters:
+  - itemName: Ball Catball
+    prefab: {fileID: 1197531479470953734, guid: fe8d736f37dc399478813787527655cf, type: 3}
+    pointsForMerging: 1
+  - itemName: Ball Tennis
+    prefab: {fileID: 1197531479470953734, guid: a915c42663bba01428303d9659035549, type: 3}
+    pointsForMerging: 2
+  - itemName: Ball Baseball
+    prefab: {fileID: 1197531479470953734, guid: cb2043701a923ba4998146d77ae09fbd, type: 3}
+    pointsForMerging: 4
+  - itemName: Ball Bouncing
+    prefab: {fileID: 1197531479470953734, guid: 659d79b57b23adf48bedd63f13c8d33a, type: 3}
+    pointsForMerging: 8
+  - itemName: Ball WaterPolo
+    prefab: {fileID: 1197531479470953734, guid: 7ffe18d614317f74eb29af6f3ae6d4f7, type: 3}
+    pointsForMerging: 16

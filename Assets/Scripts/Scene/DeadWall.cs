@@ -19,7 +19,7 @@ public class DeadWall : MonoBehaviour
 
     public void Restart()
     {
-        string scene = SceneManager.GetActiveScene().name;
-        GameManager.Instance.LoadScene(scene);
+        //string scene = SceneManager.GetActiveScene().name;
+        GameManager.Instance.LoadScene(ScenesName.MAIN_MENU);
     }
 }

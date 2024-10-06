@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     public static event Action<Item> Merged;
 
-    [field: SerializeField] public int Index { get; /*private*/ set; }
+    [field: SerializeField] public int Index { get; private set; }
 
     private bool _isInitiatorContact = true;
 

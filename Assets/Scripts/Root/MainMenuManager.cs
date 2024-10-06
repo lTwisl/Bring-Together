@@ -4,29 +4,25 @@ public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager Instance { get; private set; }
 
-    [SerializeField] private string[] _levelNames;
+    [SerializeField] private StartMenuScreenView _startMenuScreen;
+    [SerializeField] private SelectLevelScreenView _selectLevelScreen;
+    [SerializeField] public string[] _levelNames;
 
-    [SerializeField] private ScreenView _screenView;
-    private ScreenController _screenController;
+    private SelectLevelScreenController _selectLevelScreenController;
+
 
     public virtual void Awake()
     {
         Instance = this;
-        _screenController = new ScreenController(_screenView, _levelNames);
     }
 
-    private void Start()
+    public void Run(DataFinishedLevel dataFinishedLevel)
     {
-        _screenController.TableLevelsController.SetStars("Game", 2);
-    }
+        _selectLevelScreenController = new SelectLevelScreenController(_selectLevelScreen, _levelNames);
 
-    public void Run()
-    {
+        if (dataFinishedLevel.SceneName != null && dataFinishedLevel.SceneName != "")
+            _selectLevelScreenController.SetStars(dataFinishedLevel.SceneName, dataFinishedLevel.Stars);
 
-    }
-
-    public void LoadSceneGame(string scene)
-    {
-        GameManager.Instance.LoadScene(scene);
+        _selectLevelScreenController.Show();
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
-using UnityEngine;
 
 
 public class TableLevelsModel
 {
     public event Action<int> TotalStarsChanged;
 
-    [field: SerializeField] public LevelModel[] Levels { get; private set; }
+    public LevelModel[] Levels { get; private set; }
 
     private int _totalStars;
     public int TotalStars
@@ -15,8 +14,20 @@ public class TableLevelsModel
         get => _totalStars;
         private set
         {
+            if (_totalStars == value)
+                return;
+
             _totalStars = value;
-            TotalStarsChanged?.Invoke(TotalStars);
+            TotalStarsChanged?.Invoke(_totalStars);
+        }
+    }
+
+    public TableLevelsModel(LevelModel[] levels)
+    {
+        Levels = levels;
+        foreach (LevelModel levelModel in Levels)
+        {
+            levelModel.StarsChanged += OnStarsChanged;
         }
     }
 
@@ -30,7 +41,7 @@ public class TableLevelsModel
         }
     }
 
-    public void OnStarsChanged(int stars)
+    private void OnStarsChanged(int stars)
     {
         CalculateTotalStars();
     }

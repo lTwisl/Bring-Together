@@ -24,7 +24,7 @@ public class TableItemsMergesInpector : Editor
                         {
                             tableItemsMerges.ItemClass[i].ItemParameters[j].itemName = tableItemsMerges.ItemClass[i].ItemParameters[j].prefab.name;
                             Undo.RecordObject(tableItemsMerges.ItemClass[i].ItemParameters[j].prefab, "Editor Modify Scriptable Object");
-                            tableItemsMerges.ItemClass[i].ItemParameters[j].prefab.GetComponent<Item>().Index = j;
+                            //tableItemsMerges.ItemClass[i].ItemParameters[j].prefab.GetComponent<Item>().Index = j;
                             EditorUtility.SetDirty(tableItemsMerges.ItemClass[i].ItemParameters[j].prefab);
                         }
                     }

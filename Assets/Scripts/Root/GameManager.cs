@@ -8,6 +8,8 @@ public class GameManager
     public static GameManager Instance { get; private set; }
 
     private Coroutines _coroutines;
+    private DataFinishedLevel _dataFinishedLevel;
+    
     private UiLoadingScreenView _uiLoadingScreen;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -24,9 +26,12 @@ public class GameManager
         _coroutines = new GameObject("Coroutines").AddComponent<Coroutines>();
         Object.DontDestroyOnLoad(_coroutines.gameObject);
 
+        _dataFinishedLevel = new DataFinishedLevel();
+
         UiLoadingScreenView prefabUiLoadingScreen = Resources.Load<UiLoadingScreenView>("UiLoadingScreen");
         _uiLoadingScreen = Object.Instantiate(prefabUiLoadingScreen);
         Object.DontDestroyOnLoad(_uiLoadingScreen.gameObject);
+
     }
 
     private void RunGame()
@@ -51,13 +56,13 @@ public class GameManager
         yield return SceneManager.LoadSceneAsync(ScenesName.BOOT);
         yield return SceneManager.LoadSceneAsync(sceneName);
 
-        //yield return null/*new WaitForSeconds(2)*/; // Для тестов 2 секуеды, для релиза достаточно null (пропуск одного кадра)
+        yield return null/*new WaitForSeconds(2)*/; // Для тестов 2 секуеды, для релиза достаточно null (пропуск одного кадра)
 
         if (sceneName == ScenesName.MAIN_MENU)
         {
             MainMenuManager manager = Object.FindObjectOfType<MainMenuManager>();
             if (manager != null)
-                manager.Run();
+                manager.Run(_dataFinishedLevel);
             else
                 Debug.LogError("На уровне нет менеджера");
         }
@@ -65,7 +70,7 @@ public class GameManager
         {
             GameLevelManager manager = Object.FindObjectOfType<GameLevelManager>();
             if (manager != null)
-                manager.Run();
+                manager.Run(_dataFinishedLevel);
             else
                 Debug.LogError("На уровне нет менеджера");
         }

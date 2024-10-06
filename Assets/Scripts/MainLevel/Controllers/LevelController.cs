@@ -1,7 +1,7 @@
 ﻿public class LevelController
 {
-    private LevelModel _levelModel;
-    private LevelView _levelView;
+    private readonly LevelModel _levelModel;
+    private readonly LevelView _levelView;
 
     public string LevelName => _levelModel.LevelName;
 
@@ -10,8 +10,8 @@
         _levelModel = levelModel;
         _levelView = levelView;
 
-        levelView.BtnOpenLevel.onClick.AddListener(levelModel.LoadLevel);
-        levelModel.StarsChanged += OnStarsChanged;
+        _levelView.BtnOpenLevel.onClick.AddListener(OnOpenLevel);
+        _levelModel.StarsChanged += OnStarsChanged;
     }
 
     public void SetStars(int stars)
@@ -27,6 +27,11 @@
     private void OnStarsChanged(int stars)
     {
         _levelView.Stars = stars;
+    }
+
+    private void OnOpenLevel()
+    {
+        GameManager.Instance.LoadScene(_levelModel.LevelName);
     }
 }
 

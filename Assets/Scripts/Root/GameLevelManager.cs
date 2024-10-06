@@ -1,4 +1,5 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,7 @@ public class GameLevelManager : MonoBehaviour
 {
     public static GameLevelManager Instance { get; private set; }
 
+   
     public event Action<int> ChanchedScore;
     public event Action<int> LevelComplited;
 
@@ -23,16 +25,12 @@ public class GameLevelManager : MonoBehaviour
         }
     }
 
+    private DataFinishedLevel _dataFinishedLevel;
+
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        DataFinishedLevel.Clear();
-        DataFinishedLevel.SceneName = SceneManager.GetActiveScene().name;
     }
 
     private void OnEnable()
@@ -45,21 +43,24 @@ public class GameLevelManager : MonoBehaviour
         Item.Merged -= OnMerged;
     }
 
-    public void Run()
+    public void Run(DataFinishedLevel dataFinishedLevel)
     {
-        
+        _dataFinishedLevel = dataFinishedLevel;
+        _dataFinishedLevel.Clear();
+
+        _dataFinishedLevel.SceneName = SceneManager.GetActiveScene().name;
     }
 
     private void OnMerged(Item newItem)
     {
         Score += ItemsContainer[newItem.Index].pointsForMerging;
-        DataFinishedLevel.Score = Score;
+        _dataFinishedLevel.Score = Score;
 
         int countItems = ItemsContainer.Length;
         if (newItem.Index >= countItems - _countStars)
         {
             _countStars -= 1;
-            DataFinishedLevel.Stars += 1;
+            _dataFinishedLevel.Stars += 1;
             Debug.Log("Pickup star!!!");
 
 
