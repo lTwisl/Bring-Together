@@ -28,7 +28,7 @@ public class GameManager
 
         _dataFinishedLevel = new DataFinishedLevel();
 
-        UiLoadingScreenView prefabUiLoadingScreen = Resources.Load<UiLoadingScreenView>("UiLoadingScreen");
+        UiLoadingScreenView prefabUiLoadingScreen = Resources.Load<UiLoadingScreenView>("CanvasLoadingScreen");
         _uiLoadingScreen = Object.Instantiate(prefabUiLoadingScreen);
         Object.DontDestroyOnLoad(_uiLoadingScreen.gameObject);
 
@@ -40,7 +40,7 @@ public class GameManager
         string sceneName = SceneManager.GetActiveScene().name;
         LoadScene(sceneName);
 #else
-        LoadScene(ScenesName.MAIN);
+        LoadScene(ScenesName.MAIN_MENU);
 #endif
     }
 

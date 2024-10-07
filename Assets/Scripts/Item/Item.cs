@@ -18,7 +18,7 @@ public class Item : MonoBehaviour
     private IEnumerator ObjectScaling()
     {
         float counter = 0;
-        float duration = 0.5f;
+        float duration = 0.25f; // Скорость появления
         Vector3 targetScale = transform.localScale;
         while (counter < duration)
         {

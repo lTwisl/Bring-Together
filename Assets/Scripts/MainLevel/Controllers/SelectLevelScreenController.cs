@@ -4,11 +4,23 @@ public class SelectLevelScreenController
 
     private readonly TableLevelsController _tableLevelsController;
 
-    public SelectLevelScreenController(SelectLevelScreenView selectLevelScreenView, string[] levels)
+    //public SelectLevelScreenController(SelectLevelScreenView selectLevelScreenView, string[] levels)
+    //{
+    //    _selectLevelScreenView = selectLevelScreenView;
+
+    //    TableLevelsModel model = new(levels);
+    //    _tableLevelsController = new(model, _selectLevelScreenView.TableLevelsView);
+
+    //    model.TotalStarsChanged += OnTotalStarsChanged;
+
+    //    _tableLevelsController.UpdateView();
+    //}
+
+    public SelectLevelScreenController(SelectLevelScreenView selectLevelScreenView, ScenesTree scenesTree)
     {
         _selectLevelScreenView = selectLevelScreenView;
 
-        TableLevelsModel model = new(levels);
+        TableLevelsModel model = new(scenesTree);
         _tableLevelsController = new(model, _selectLevelScreenView.TableLevelsView);
 
         model.TotalStarsChanged += OnTotalStarsChanged;

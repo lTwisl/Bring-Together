@@ -15,6 +15,7 @@ public class Bug : MonoBehaviour
     {
         defaulSpeed *= Random.Range(speedRange.x, speedRange.y);
         transform.localScale *= Random.Range(scaleRange.x, scaleRange.y);
+        areaObject = GameObject.Find("BugsArea");
         areaCollider = areaObject.GetComponentInParent<Collider2D>();
     }
 
@@ -30,7 +31,6 @@ public class Bug : MonoBehaviour
         Rotating();
     }
 
-    [System.Obsolete]
     void Moving()
     {
         // Для ситуации, когда обьем перемещения сдвигается

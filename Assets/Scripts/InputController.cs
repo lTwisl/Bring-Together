@@ -10,6 +10,12 @@ public class InputController : MonoBehaviour
     [HideInInspector] public bool drop;
     [HideInInspector] public bool aim;
 
+    private void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     // Update is called once per frame
     void Update()
     {

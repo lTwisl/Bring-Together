@@ -31,12 +31,22 @@ public class TableLevelsModel
         }
     }
 
-    public TableLevelsModel(string[] levelNames)
+    //public TableLevelsModel(string[] levelNames)
+    //{
+    //    Levels = new LevelModel[levelNames.Length];
+    //    for (int i = 0; i < levelNames.Length; i++)
+    //    {
+    //        Levels[i] = new LevelModel(0, levelNames[i]);
+    //        Levels[i].StarsChanged += OnStarsChanged;
+    //    }
+    //}
+
+    public TableLevelsModel(ScenesTree scenesTree)
     {
-        Levels = new LevelModel[levelNames.Length];
-        for (int i = 0; i < levelNames.Length; i++)
+        Levels = new LevelModel[scenesTree.Length];
+        for (int i = 0; i < scenesTree.Length; i++)
         {
-            Levels[i] = new LevelModel(0, levelNames[i]);
+            Levels[i] = new LevelModel(0, scenesTree[i].sceneName);
             Levels[i].StarsChanged += OnStarsChanged;
         }
     }
