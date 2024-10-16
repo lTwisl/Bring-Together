@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2f1f2906c762642b1c82c66b2dab63, type: 3}
+  m_Name: JarsContainer
+  m_EditorClassIdentifier: 
+  className: Balls
+  indexSmallestSpawnItem: 0
+  indexBiggestSpawnItem: 2
+  _itemParameters:
+  - itemName: Jar 1
+    prefab: {fileID: 1197531479470953734, guid: 374389f80b5824e43a1ca82e72a2bdc4, type: 3}
+    pointsForMerging: 1
+    particleSystem: {fileID: 0}
+  - itemName: Jar 2
+    prefab: {fileID: 1197531479470953734, guid: c236f9146da317342a5490f64639baf2, type: 3}
+    pointsForMerging: 2
+    particleSystem: {fileID: 0}
+  - itemName: Jar 3
+    prefab: {fileID: 1197531479470953734, guid: 39b6a007c9bb9ea4096daa661fd26baa, type: 3}
+    pointsForMerging: 4
+    particleSystem: {fileID: 0}
+  - itemName: Jar 4
+    prefab: {fileID: 1197531479470953734, guid: f6c73f861ce41774ba5c87e227947169, type: 3}
+    pointsForMerging: 4
+    particleSystem: {fileID: 0}
+  - itemName: Jar 5
+    prefab: {fileID: 1197531479470953734, guid: 0ba80e8948e2d6e49a52d2c1f593d79d, type: 3}
+    pointsForMerging: 4
+    particleSystem: {fileID: 0}
+  - itemName: Jar 6
+    prefab: {fileID: 1197531479470953734, guid: da64d8f726df46a41a2c2ee545a6073e, type: 3}
+    pointsForMerging: 4
+    particleSystem: {fileID: 0}
