@@ -2,15 +2,17 @@
 using UnityEngine;
 
 
+[Serializable]
 public class LevelModel
 {
     public event Action<int> StarsChanged;
 
     public string LevelName;
 
-    private int _stars;
-    public int Stars { 
-        get => _stars; 
+    [SerializeField, HideInInspector] private int _stars;
+    public int Stars
+    {
+        get => _stars;
         set
         {
             if (_stars == value)

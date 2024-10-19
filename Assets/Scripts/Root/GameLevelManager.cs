@@ -1,5 +1,4 @@
 using System;
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +6,7 @@ public class GameLevelManager : MonoBehaviour
 {
     public static GameLevelManager Instance { get; private set; }
 
-   
+
     public event Action<int> ChanchedScore;
     public event Action<int> LevelComplited;
 
