@@ -28,5 +28,6 @@ public class MainMenuManager : MonoBehaviour
             _selectLevelScreenController.SetStars(dataFinishedLevel.SceneName, dataFinishedLevel.Stars);
 
         _selectLevelScreenController.Show();
+        _selectLevelScreenController.SaveModelToJson();
     }
 }

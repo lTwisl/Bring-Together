@@ -12,17 +12,15 @@ public class TableLevelsController
         _tableLevelsModel = model;
         _tableLevelsView = view;
 
-        foreach (LevelModel level in _tableLevelsModel.Levels)
+        for (int i = 0; i < _tableLevelsModel.Levels.Length; ++i)
         {
-            LevelView levelView = _tableLevelsView.CreateLevelView();
-            levelView.SetName(level.LevelName);
-            _levelControllersMap.Add(level.LevelName, new LevelController(level, levelView));
+            _levelControllersMap.Add(_tableLevelsModel.Levels[i].LevelName, new LevelController(_tableLevelsModel.Levels[i], view.LevelViews[i]));
         }
     }
 
-    public void SetStars(string levelName, int stars)
+    public void SetStars(string sceneName, int countStars)
     {
-        _levelControllersMap[levelName].SetStars(stars);
+        _levelControllersMap[sceneName].SetStars(countStars);
     }
 
     public void UpdateView()

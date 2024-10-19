@@ -9,8 +9,10 @@ public class GameManager
 
     private Coroutines _coroutines;
     private DataFinishedLevel _dataFinishedLevel;
-    
+
     private UiLoadingScreenView _uiLoadingScreen;
+
+    public const string FILE_SAVE = ".\\UserSettings\\Save.json";
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void AutostartGame()
