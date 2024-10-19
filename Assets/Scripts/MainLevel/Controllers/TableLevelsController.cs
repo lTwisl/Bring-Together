@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+
 
 public class TableLevelsController
 {
@@ -20,7 +22,10 @@ public class TableLevelsController
 
     public void SetStars(string sceneName, int countStars)
     {
-        _levelControllersMap[sceneName].SetStars(countStars);
+        if (_levelControllersMap.ContainsKey(sceneName) == true)
+            _levelControllersMap[sceneName].SetStars(countStars);
+        else 
+            Debug.LogWarning($"Сцены с иемене \"{sceneName}\" не существует в общем списке сцен");
     }
 
     public void UpdateView()
