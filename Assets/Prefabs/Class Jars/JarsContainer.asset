@@ -40,3 +40,7 @@ MonoBehaviour:
     prefab: {fileID: 1197531479470953734, guid: da64d8f726df46a41a2c2ee545a6073e, type: 3}
     pointsForMerging: 4
     particleSystem: {fileID: 0}
+  - itemName: Jar 7
+    prefab: {fileID: 1197531479470953734, guid: 1eb851e0435fb98459c6080c915524a3, type: 3}
+    pointsForMerging: 4
+    particleSystem: {fileID: 0}
