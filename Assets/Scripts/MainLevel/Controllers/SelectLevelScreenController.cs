@@ -1,26 +1,18 @@
+using System.Linq;
+
 public class SelectLevelScreenController
 {
     private readonly SelectLevelScreenView _selectLevelScreenView;
 
     private readonly TableLevelsController _tableLevelsController;
 
-    //public SelectLevelScreenController(SelectLevelScreenView selectLevelScreenView, string[] levels)
-    //{
-    //    _selectLevelScreenView = selectLevelScreenView;
-
-    //    TableLevelsModel model = new(levels);
-    //    _tableLevelsController = new(model, _selectLevelScreenView.TableLevelsView);
-
-    //    model.TotalStarsChanged += OnTotalStarsChanged;
-
-    //    _tableLevelsController.UpdateView();
-    //}
-
     public SelectLevelScreenController(SelectLevelScreenView selectLevelScreenView, ScenesTree scenesTree)
     {
         _selectLevelScreenView = selectLevelScreenView;
 
-        TableLevelsModel model = new(scenesTree);
+        TableLevelsModel model = new(scenesTree.GetSceneNames());
+        _selectLevelScreenView.TableLevelsView.CreateLevelViews(scenesTree.GetSceneTitles());
+
         _tableLevelsController = new(model, _selectLevelScreenView.TableLevelsView);
 
         model.TotalStarsChanged += OnTotalStarsChanged;
@@ -31,9 +23,9 @@ public class SelectLevelScreenController
     public void Show() => _selectLevelScreenView.gameObject.SetActive(true);
     public void Hide() => _selectLevelScreenView.gameObject.SetActive(false);
 
-    public void SetStars(string levelName, int stars)
+    public void SetStars(string sceneName, int countStars)
     {
-        _tableLevelsController.SetStars(levelName, stars);
+        _tableLevelsController.SetStars(sceneName, countStars);
     }
 
     private void OnTotalStarsChanged(int totalStars)

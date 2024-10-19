@@ -1,5 +1,5 @@
+using System.Linq;
 using UnityEngine;
-using static ItemsContainer;
 
 
 [CreateAssetMenu(fileName = "Scenes Tree", menuName = "Create Scenes Tree File")]
@@ -19,4 +19,8 @@ public class ScenesTree : ScriptableObject
     }
 
     public int Length => sceneInfos.Length;
+
+    public string[] GetSceneTitles() => sceneInfos.Select(x => x.sceneTitle).ToArray();
+
+    public string[] GetSceneNames() => sceneInfos.Select(x => x.sceneName).ToArray();
 }

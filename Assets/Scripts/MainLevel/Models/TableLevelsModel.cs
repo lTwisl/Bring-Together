@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -22,31 +23,12 @@ public class TableLevelsModel
         }
     }
 
-    public TableLevelsModel(LevelModel[] levels)
+    public TableLevelsModel(string[] sceneNames)
     {
-        Levels = levels;
-        foreach (LevelModel levelModel in Levels)
+        Levels = new LevelModel[sceneNames.Length];
+        for (int i = 0; i < sceneNames.Length; i++)
         {
-            levelModel.StarsChanged += OnStarsChanged;
-        }
-    }
-
-    //public TableLevelsModel(string[] levelNames)
-    //{
-    //    Levels = new LevelModel[levelNames.Length];
-    //    for (int i = 0; i < levelNames.Length; i++)
-    //    {
-    //        Levels[i] = new LevelModel(0, levelNames[i]);
-    //        Levels[i].StarsChanged += OnStarsChanged;
-    //    }
-    //}
-
-    public TableLevelsModel(ScenesTree scenesTree)
-    {
-        Levels = new LevelModel[scenesTree.Length];
-        for (int i = 0; i < scenesTree.Length; i++)
-        {
-            Levels[i] = new LevelModel(0, scenesTree[i].sceneName);
+            Levels[i] = new LevelModel(0, sceneNames[i]);
             Levels[i].StarsChanged += OnStarsChanged;
         }
     }
