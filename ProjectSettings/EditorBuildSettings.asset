@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Classic Levels/Classic Nuts.unity
     guid: f7f956dba7fddca4791a9288ec414c37
+  - enabled: 1
+    path: Assets/Scenes/Classic Levels/Classic Jars.unity
+    guid: f9855eb0c40c6074dbf319693213247c
   m_configObjects: {}
