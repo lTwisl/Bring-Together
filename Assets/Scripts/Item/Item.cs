@@ -51,8 +51,10 @@ public class Item : MonoBehaviour
 
     private void Merge(Item other, Vector3 contactPoint)
     {
-        GameObject nextItemPrefab = GameLevelManager.Instance.ItemsContainer[Index + 1].prefab;
+        if (Index + 1 >= GameLevelManager.Instance.ItemsContainer.Length)
+            return;
 
+        GameObject nextItemPrefab = GameLevelManager.Instance.ItemsContainer[Index + 1].prefab;
         GameObject nextItem = Instantiate(nextItemPrefab);
         nextItem.transform.position = contactPoint;
 

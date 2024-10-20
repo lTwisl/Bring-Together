@@ -56,7 +56,7 @@ public class GameLevelManager : MonoBehaviour
         _dataFinishedLevel.Score = Score;
 
         int countItems = ItemsContainer.Length;
-        if (newItem.Index >= countItems - _countStars)
+        if (_countStars > 0 && newItem.Index >= countItems - _countStars)
         {
             _countStars -= 1;
             _dataFinishedLevel.Stars += 1;
